@@ -10,9 +10,13 @@ var _current_speed: float
 @export var _body: Node3D = null
 @export var _spring_arm_offset: Node3D = null
 
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 func _physics_process(_delta:float) -> void:
 	_move()
 	move_and_slide()
+	_body.animate(velocity)
 	
 func _move() -> void:
 	var _input_direction: Vector2 = Input.get_vector(
